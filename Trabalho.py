@@ -44,7 +44,7 @@ for livro, linha in livros.iterrows():
     pg.hotkey('ctrl','v')
     pg.hotkey("ctrl", "u")
     pg.press("enter")
-    time.sleep(0.3)
+    time.sleep(0.5)
     pc.copy(autor)
     pg.hotkey('ctrl','v')
     pg.press("enter")
