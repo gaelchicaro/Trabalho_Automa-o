@@ -10,25 +10,41 @@ print(biblioteca)
 #Todo o bloco do tkinter foi o chat que fez, pois 
 # eu não queria usar o input para deixar mais interativo pro usuário
 
-
-
-
 livros = pd.read_excel("livros.xlsx")
+
 hoje = datetime.now()
 data_formatada = hoje.strftime('%d/%m/%Y')
-#Uso de Ia para inserir a data
+#Uso de Ia para aprender a inserir a data
 
 pg.press("win")
 time.sleep(0.5)
-pg.write("writer")
+pg.write("writer")#Se quiser usar no word é só trocar ("writer") por ("word")
 pg.press("enter")
 time.sleep(1)
+
+'''start = pg.locateOnScreen("final.png")
+print(start)
+
+continuar = True
+while continuar:
+    try:
+        start = pg.locateCenterOnScreen("inicio.png", confidence=0.9)
+    except pg.ImageNotFoundException:
+        start = None
+
+    if start is not None:
+            continuar = False
+    else:
+        print("esperando o Writer")
+        time.sleep(1)
+#Bloco criado pelo Claude para me ajudar a garantir que só vai começar a escrever dentro do writer'''
 
 pg.press("enter")
 pg.hotkey("ctrl", "b")
 pg.write("Ficha de Livros")
 time.sleep(0.1)
 pg.hotkey("ctrl", "b")
+pg.press("enter")
 pg.press("enter")
 for livro, linha in livros.iterrows():
     
@@ -38,7 +54,7 @@ for livro, linha in livros.iterrows():
     ano = str(linha["Ano_lancamento"])
     genero = linha["Genero"]
 
-# Uso de Ia para apernder a escrever com acentos usando o pyperclip
+# Uso de Ia para aprender a escrever com acentos usando o pyperclip
     pc.copy(nome)
     pg.hotkey("ctrl", "u")
     pg.hotkey('ctrl','v')
@@ -58,6 +74,7 @@ for livro, linha in livros.iterrows():
     pg.press("enter")
     pg.press("enter")
     time.sleep(0.3)
+        
 
 time.sleep(0.5)
 pg.write("Biblioteca provedora: ")
